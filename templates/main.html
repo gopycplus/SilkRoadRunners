@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silk Road Runners</title>
+    {% include "snippets/css/postscss.html" %}
+    {% include "snippets/css/headercss.html" %}
+    {% include "snippets/css/footercss.html" %}
+    {% include "snippets/css/accountcss.html" %}
+    {% include "snippets/css/paginationcss.html" %}
+    {% include "snippets/css/create_articlecss.html" %}
+    {% include "snippets/css/logincss.html" %}
+    {% include "snippets/css/edit_articlecss.html" %}
+    {% include "snippets/css/detail_articlecss.html" %}
+    {% include "snippets/css/password_changecss.html" %}
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="../static/logo.jfif">
+</head>
+<body>
+    {% include "snippets/header.html" %}    
+    <!-- Body -->
+    <div class="main">
+        {% if request.user.is_admin%}
+            {% block admin_content %}
+
+            {% endblock admin_content %}
+        {% else %}
+            {% block content %}
+
+            {% endblock content %}
+        {% endif %}
+    </div>
+    <!-- End Body -->
+    {% include "snippets/footer.html" %}
+</body>
+</html>

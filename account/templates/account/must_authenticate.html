@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div>
+    <div>
+        <p>Must authenticate to view this page.</p>
+        <p>
+            <a href="{% url "register" %}">Register</a> or
+            <a href="{% url "login" %}">Login</a> 
+        </p>
+    </div>
+</div>
+
+{% endblock content %}

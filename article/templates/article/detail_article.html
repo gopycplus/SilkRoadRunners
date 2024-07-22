@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="article-card">
+        <img src="{{ article.image.url }}" class="article-image">
+        <div class="article-body">
+            <h2 class="article-title">{{ article.title }}</h2>
+            <p class="article-text">{{ article.body|safe }}</p>
+            {% if article.author == request.user %}
+                <a href="{% url 'article:edit' article.slug %}" class="btn-update">Update</a>
+            {% endif %}
+        </div>
+        <div class="article-footer">
+            <span class="footer-date">Updated on {{ article.date_updated }}</span>
+            <span class="footer-author">by {{ article.author }}</span>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block admin_content %}
+    <div class="article-card">
+        <img src="{{ article.image.url }}" class="article-image">
+        <div class="article-body">
+            <h2 class="article-title">{{ article.title }}</h2>
+            <p class="article-text">{{ article.body|safe }}</p>
+            {% if article.author == request.user %}
+                <a href="{% url 'article:edit' article.slug %}" class="btn-update">Update</a>
+            {% endif %}
+        </div>
+        <div class="article-footer">
+            <span class="footer-date">Updated on {{ article.date_updated }}</span>
+            <span class="footer-author">by {{ article.author }}</span>
+        </div>
+    </div>
+{% endblock admin_content %}

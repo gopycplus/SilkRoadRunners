@@ -1,0 +1,92 @@
+{% if request.user.is_authenticated %}
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="https://i.ibb.co/xFGnNxF/Logo.jpg" class="logo-img" alt="Logo">
+            </a>
+        </div>
+        <div class="search_bar">
+            <form method="get">
+                <input type="text" name="q" id="id_q" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div> 
+        <nav class="main-nav">
+            <!-- Desktop Links -->
+            <ul class="desktop-nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'account' %}">Account</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+            <!-- Mobile Links -->
+            <ul class="mobile-nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'account' %}">Account</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+            <div class="hamburger-menu">
+                <button class="hamburger-btn" onclick="toggleMenu()"></button>
+            </div>
+        </nav>
+        <div class="user-info">
+            <p>Hello, {{ request.user.username }}</p>
+        </div>
+    </div>
+    <div class="menu-backdrop" onclick="toggleMenu()"></div>
+</header>
+{% else %}
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="https://i.ibb.co/xFGnNxF/Logo.jpg" class="logo-img" alt="Logo">
+            </a>
+        </div>
+        <div class="search_bar">
+            <form method="get">
+                <input type="text" name="q" id="id_q" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div> 
+        <nav class="main-nav">
+            <!-- Desktop Links -->
+            <ul class="desktop-nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+            <!-- Mobile Links -->
+            <ul class="mobile-nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+            <div class="hamburger-menu">
+                <button class="hamburger-btn" onclick="toggleMenu()"></button>
+            </div>
+        </nav>
+    </div>
+    <div class="menu-backdrop" onclick="toggleMenu()"></div>
+</header>
+{% endif %}
+
+<script type="text/javascript">
+    document.getElementById("id_q").value = "{{query}}";
+
+    function toggleMenu() {
+        var navLinks = document.querySelector('.mobile-nav-links');
+        var backdrop = document.querySelector('.menu-backdrop');
+        var hamburgerBtn = document.querySelector('.hamburger-btn');
+        
+        navLinks.classList.toggle('active');
+        backdrop.classList.toggle('active');
+        hamburgerBtn.classList.toggle('active');
+        
+        if (navLinks.classList.contains('active')) {
+            backdrop.addEventListener('click', toggleMenu);
+        } else {
+            backdrop.removeEventListener('click', toggleMenu);
+        }
+    }
+</script>

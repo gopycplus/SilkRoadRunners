@@ -1,0 +1,156 @@
+<style>
+    .update-article-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    .update-article-form {
+        width: 100%;
+        max-width: 800px;
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .success-message {
+        color: green;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .form-group textarea {
+        width: 100%; /* Make the textarea responsive */
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        resize: none; /* Disable resizing */
+    }    
+    
+    .image-group {
+        position: relative;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+    
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 4px;
+    }
+    
+    .image-group:hover .image-overlay {
+        opacity: 1;
+    }
+    
+    .overlay-text {
+        font-size: 16px;
+    }
+    
+    .form-errors {
+        margin-bottom: 15px;
+    }
+    
+    .error-message {
+        color: red;
+        margin: 5px 0;
+    }
+    
+    .error-summary {
+        color: red;
+    }
+    
+    .submit-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .submit-button:hover {
+        background-color: #0056b3;
+    }    
+</style>
+
+<style>
+    /* Modal styles */
+    .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>

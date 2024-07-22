@@ -1,0 +1,99 @@
+<footer>
+    <div class="footer-content">
+        <p class="footer-title">Silk Road Runners</p>
+        <p class="footer-year">&copy; 2024 All Rights Reserved</p>
+        <div class="footer-links">
+            <button class="footer-button" onclick="showPopup('about')">About Us</button>
+            <button class="footer-button" onclick="showPopup('contact')">Contact</button>
+            <button class="footer-button" onclick="showPopup('privacy')">Privacy Policy</button>
+        </div>
+    </div>
+</footer>
+
+<!-- Pop-ups -->
+<div id="about-popup" class="popup popup-about">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closePopup('about')">&times;</span>
+        <h2>About Us</h2>
+        <p>Welcome to Silk Road Runners, where our passion for running meets the thrill of adventure. We are a dedicated group of enthusiasts who believe in the power of running to transform lives and bring people together. Our mission is to foster a community where runners of all levels can connect, inspire, and achieve their personal best. Join us in exploring the scenic routes and exciting events that make running a joyful and enriching experience.</p>
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+        </div>
+    </div>
+</div>
+
+<div id="contact-popup" class="popup popup-contact">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closePopup('contact')">&times;</span>
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Whether you have questions about our events, want to join our community, or simply want to provide feedback, feel free to reach out. You can contact us via email at <a href="mailto:info@silkroadrunners.com">info@silkroadrunners.com</a> or follow us on our social media channels for the latest updates and news.</p>
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+        </div>
+    </div>
+</div>
+
+<div id="privacy-popup" class="popup popup-privacy">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closePopup('privacy')">&times;</span>
+        <h2>Privacy Policy</h2>
+        <p>Your privacy is important to us. At Silk Road Runners, we are committed to protecting your personal information and ensuring that your data is handled responsibly. Our privacy policy outlines the types of information we collect, how we use it, and the measures we take to safeguard your data. For more details, please read our full privacy policy or contact us if you have any questions.</p>
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Add event listeners to close pop-ups when clicking outside
+        document.querySelectorAll('.popup').forEach(popup => {
+            popup.addEventListener('click', (event) => {
+                if (event.target === popup) {
+                    closePopup(popup.id.replace('-popup', ''));
+                }
+            });
+        });
+    
+        // Add transition effect for pop-ups
+        const popups = document.querySelectorAll('.popup');
+        popups.forEach(popup => {
+            popup.addEventListener('transitionend', () => {
+                if (!popup.classList.contains('popup-open')) {
+                    popup.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    function showPopup(id) {
+        const popup = document.getElementById(`${id}-popup`);
+        popup.style.display = 'flex';
+        setTimeout(() => {
+            popup.classList.add('popup-open');
+        }, 10); // Delay to ensure display: flex is applied before animation
+    }
+    
+    function closePopup(id) {
+        const popup = document.getElementById(`${id}-popup`);
+        popup.classList.remove('popup-open');
+        popup.addEventListener('transitionend', () => {
+            popup.style.display = 'none';
+        }, { once: true }); // Ensure the event listener only runs once
+    }
+    
+    // Example of dynamic content loading function
+    function loadPopupContent(id, content) {
+        const popupContent = document.querySelector(`#${id}-popup .popup-content`);
+        popupContent.innerHTML = content;
+    }   
+</script>

@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="login-page">
+    <div class="login-container">
+        <h2>Register</h2>
+        <form method="post" class="login-form">{% csrf_token %}
+            {% for field in registration_form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small class="help-text">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="submit-button">Register</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

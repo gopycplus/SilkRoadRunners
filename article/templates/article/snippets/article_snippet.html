@@ -1,0 +1,26 @@
+{% if articles %}
+    <div class="articles-grid">
+        {% for article in articles %}
+            <div class="post">
+                <a href="{% url 'article:detail' article.slug %}">
+                    <img class="post-image" src="{{article.image.url}}" alt="{{article.title}}">
+                </a>
+                <div class="post-content">
+                    <a href="{% url 'article:detail' article.slug %}" class="post-title">{{article.title}}</a>
+                    <p class="post-body">{{article.body|safe|truncatechars:250}}</p>
+                    {% if article.author == request.user %}
+                        <a href="{% url 'article:edit' article.slug %}" class="post-edit">Update</a>
+                    {% endif %}
+                </div>
+                <div class="post-footer">
+                    Updated on {{article.date_updated}} by {{article.author}}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="post" style="padding: 0 10px;">
+        <h2>No results</h2>
+        <p>There were no results matching you search result: "{{query}}".</p>
+    </div>
+{% endif %}
